@@ -10,7 +10,7 @@ Can be used in any blueprint
 # Reverse (by copy)
 
 | Node | Inputs | Outputs | Note |
-| -------- | ---- | ---- |
+| -------- | ---- | ---- | ---- |
 | ReverseInteger | Array<Integer> | Array<Integer> | Reverse an array by copy and return the reversed array |
 | ReverseFloat | Array<Float> | Array<Float> | Reverse an array by copy and return the reversed array |
 | ReverseString | Array<String> | Array<String> | Reverse an array by copy and return the reversed array |
@@ -21,7 +21,7 @@ Can be used in any blueprint
 # Convert
 
 | Node | Inputs | Outputs | Note |
-| -------- | ---- | ---- |
+| -------- | ---- | ---- | ---- |
 | SplitString | String | Array<String> | Splits a string using a specific separator and return an array of strings |
 | ToIntegerSet | Array<Integer> | Set<Integer> | Converts an array to a new set (removes duplicate) |
 | ToFloatSet | Array<Float> | Set<Float> | Converts an array to a new set (removes duplicate) |
@@ -33,7 +33,7 @@ Can be used in any blueprint
  # Clamp
  
  | Node | Inputs | Outputs | Note |
-| -------- | ---- | ---- |
+| -------- | ---- | ---- | ---- |
 | ClampInteger | Array<Integer>, Min, Max | Array<Integer> | Returns a new array clamped using min and max value |
 | ClampFloat | Array<Float>, Min, Max | Array<Float> | Returns a new array clamped using min and max value |
 | ClampVector | Array<Vector>, MinSize, MaxSize, Only2D | Array<Vector> | Returns a new array clamped using min and max value |
@@ -44,7 +44,7 @@ Can be used in any blueprint
  # Range
  
   | Node | Inputs | Outputs | Note |
-| -------- | ---- | ---- |
+| -------- | ---- | ---- | ---- |
 | ExtractInteger | Array<Integer>, StartIndex, EndIndex | Array<Integer> | Returns a subarray of the first array using start and end index |
 | ExtractFloat | Array<Float>, StartIndex, EndIndex | Array<Float> | Returns a subarray of the first array using start and end index |
 | ExtractString | Array<String>, StartIndex, EndIndex | Array<String> | Returns a subarray of the first array using start and end index |
@@ -55,7 +55,7 @@ Can be used in any blueprint
  # Random
  
    | Node | Inputs | Outputs | Note |
-| -------- | ---- | ---- |
+| -------- | ---- | ---- | ---- |
 | RandomInteger | Size, Min, Max | Array<Integer> | Returns a random array filled with value between min and max |
 | RandomFloat | Size, Min, Max | Array<Float> | Returns a random array filled with value between min and max |
 | RandomVector | Size, Min, Max | Array<Vector> | Returns a random array filled with value between min and max |
@@ -63,7 +63,7 @@ Can be used in any blueprint
  # Sort
  
 | Node | Inputs | Outputs | Note |
-| -------- | ---- | ---- |
+| -------- | ---- | ---- | ---- |
 | SortInteger | Array<Integer>, IsAscending | Array<Integer> | Returns a copy of the array sorted by descending or ascending order |
 | SortFloat | Array<Float>, IsAscending | Array<Float> | Returns a copy of the array sorted by descending or ascending order |
 | SortString | Array<String>, IsAscending | Array<String> | Returns a copy of the array sorted by descending or ascending order |
@@ -80,7 +80,7 @@ Can be used in any blueprint
 In order to sort by predicate you must implement the ArrayComparator Interface and pass the object implementing this interface as input of the function (Context), the appropriate compare method will be called to perform the sort
  
 | Node | Inputs | Outputs | Note |
-| -------- | ---- | ---- |
+| -------- | ---- | ---- | ---- |
 | PredicateSortInteger | Array<Integer>, Context | Array<Integer> | Returns a new array sorted using a custom predicate implemented in Context |
 | PredicateSortFloat | Array<Float>, Context | Array<Float> | Returns a new array sorted using a custom predicate implemented in Context |
 | PredicateSortString | Array<String>, Context | Array<String> | Returns a new array sorted using a custom predicate implemented in Context |
@@ -97,14 +97,14 @@ In order to sort by predicate you must implement the ArrayComparator Interface a
  # Vectors
  
 | Node | Inputs | Outputs | Note |
-| -------- | ---- | ---- |
+| -------- | ---- | ---- | ---- |
 | ClosestLocation | Array<Vector>, Origin | Closest, Distance, Index | Return the closest vector to Origin, the distance, the index in array |
 | FarthestLocation | Array<Vector>, Origin | Farthest, Distance, Index | Return the farthest vector to Origin, the distance, the index in array |
  
 # Filters
 
 | Node | Inputs | Outputs | Note |
-| -------- | ---- | ---- |
+| -------- | ---- | ---- | ---- |
 | FilterMatches | Array<String>, Pattern | Found, Array<String> | Returns an array containing strings that match the pattern (regex) |
 | FilterMatch | Array<String>, Pattern | Found, String, Index | Returns the first string matching the pattern (regex) with its index |
  
@@ -113,7 +113,7 @@ In order to sort by predicate you must implement the ArrayComparator Interface a
 In order to filter by predicate you must implement the ArrayFilter Interface and pass the object implementing this interface as input of the function (Context), the appropriate filter method will be called to perform the filtering
 
 | Node | Inputs | Outputs | Note |
-| -------- | ---- | ---- |
+| -------- | ---- | ---- | ---- |
 | PredicateFilterInteger | Array<Integer>, Context | Array<Integer> | Returns a new array filtered using a custom predicate implemented in Context |
 | PredicateFilterFloat | Array<Float>, Context | Array<Float> | Returns a new array filtered using a custom predicate implemented in Context |
 | PredicateFilterString | Array<String>, Context | Array<String> | Returns a new array filtered using a custom predicate implemented in Context |
