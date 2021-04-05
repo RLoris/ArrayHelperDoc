@@ -1,13 +1,19 @@
 # ArrayHelper
 
-UE4 Plugin to handle arrays operations
-This is a blueprint library plugin
-It exposes 60 functions to handle arrays by value or by reference
-Can be used in any blueprint
+- UE4 Plugin to handle arrays operations
+- This is a blueprint library plugin
+- It exposes 60 functions to handle arrays by value or by reference
+- Can be used in any blueprint
+
+![Nodes](./assets/nodes.png)
+
+[Link to the plugin in marketplace](https://www.unrealengine.com/marketplace/en-US/product/array-helper-bp-library)
 
 # Documentation
 
 # Reverse (by copy)
+
+![Reverse](./assets/reverse.png)
 
 | Node | Inputs | Outputs | Note |
 | -------- | ---- | ---- | ---- |
@@ -20,6 +26,8 @@ Can be used in any blueprint
 
 # Convert
 
+![Convert](./assets/convert.png)
+
 | Node | Inputs | Outputs | Note |
 | -------- | ---- | ---- | ---- |
 | SplitString | String | Array(String) | Splits a string using a specific separator and return an array of strings |
@@ -30,9 +38,11 @@ Can be used in any blueprint
 | ToVectorSet | Array(Vector) | Set(Vector) | Converts an array to a new set (removes duplicate) |
 | ToObjectSet | Array(Object) | Set(Object) | Converts an array to a new set (removes duplicate) |
   
- # Clamp
+# Clamp
+
+![Clamp](./assets/clamp.png)
  
- | Node | Inputs | Outputs | Note |
+| Node | Inputs | Outputs | Note |
 | -------- | ---- | ---- | ---- |
 | ClampInteger | Array(Integer), Min, Max | Array(Integer) | Returns a new array clamped using min and max value |
 | ClampFloat | Array(Float), Min, Max | Array(Float) | Returns a new array clamped using min and max value |
@@ -41,9 +51,11 @@ Can be used in any blueprint
 | ClampFloatByRef | Array(Float), Min, Max | void | Updates the input array and clamp values using min and max value |
 | ClampVectorRef | Array(Vector), MinSize, MaxSize, Only2D | void | Updates the input array and clamp values using min and max value |
   
- # Range
+# Range
+
+![Range](./assets/range.png)
  
-  | Node | Inputs | Outputs | Note |
+| Node | Inputs | Outputs | Note |
 | -------- | ---- | ---- | ---- |
 | ExtractInteger | Array(Integer), StartIndex, EndIndex | Array(Integer) | Returns a subarray of the first array using start and end index |
 | ExtractFloat | Array(Float), StartIndex, EndIndex | Array(Float) | Returns a subarray of the first array using start and end index |
@@ -52,15 +64,19 @@ Can be used in any blueprint
 | ExtractVector | Array(Vector), StartIndex, EndIndex | Array(Vector) | Returns a subarray of the first array using start and end index |
 | ExtractObject | Array(Object), StartIndex, EndIndex | Array(Object) | Returns a subarray of the first array using start and end index |
   
- # Random
+# Random
+
+![Random](./assets/random.png)
  
-   | Node | Inputs | Outputs | Note |
+| Node | Inputs | Outputs | Note |
 | -------- | ---- | ---- | ---- |
 | RandomInteger | Size, Min, Max | Array(Integer) | Returns a random array filled with value between min and max |
 | RandomFloat | Size, Min, Max | Array(Float) | Returns a random array filled with value between min and max |
 | RandomVector | Size, Min, Max | Array(Vector) | Returns a random array filled with value between min and max |
   
- # Sort
+# Sort
+
+![Sort](./assets/sort.png)
  
 | Node | Inputs | Outputs | Note |
 | -------- | ---- | ---- | ---- |
@@ -75,7 +91,9 @@ Can be used in any blueprint
 | SortNameByRef | Array(Name), IsAscending | void | Sorts the input array by descending or ascending order |
 | SortVectorByRef | Array(Vector), Origin, IsAscending | void | Sorts the input array by descending or ascending order based on Origin |
 
- # Sort by predicate
+# Sort by predicate
+
+![Predicate Sort](./assets/predicate_sort.png)
  
 In order to sort by predicate you must implement the ArrayComparator Interface and pass the object implementing this interface as input of the function (Context), the appropriate compare method will be called to perform the sort
  
@@ -94,7 +112,9 @@ In order to sort by predicate you must implement the ArrayComparator Interface a
 | PredicateSortVectorByRef | Array(Vector), Context | void | Sorts the input array using a custom predicate implemented in Context |
 | PredicateSortObjectByRef | Array(Object), Context | void | Sorts the input array using a custom predicate implemented in Context |
   
- # Vectors
+# Vectors
+
+![Vector](./assets/vector.png)
  
 | Node | Inputs | Outputs | Note |
 | -------- | ---- | ---- | ---- |
@@ -103,12 +123,16 @@ In order to sort by predicate you must implement the ArrayComparator Interface a
  
 # Filters
 
+![Filter](./assets/filter.png)
+
 | Node | Inputs | Outputs | Note |
 | -------- | ---- | ---- | ---- |
 | FilterMatches | Array(String), Pattern | Found, Array(String) | Returns an array containing strings that match the pattern (regex) |
 | FilterMatch | Array(String), Pattern | Found, String, Index | Returns the first string matching the pattern (regex) with its index |
  
 # Filters by predicate
+
+![Predicate Filter](./assets/predicate_filter.png)
 
 In order to filter by predicate you must implement the ArrayFilter Interface and pass the object implementing this interface as input of the function (Context), the appropriate filter method will be called to perform the filtering
 
