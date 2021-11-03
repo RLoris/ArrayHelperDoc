@@ -2,7 +2,7 @@
 
 ![thumbnail](./assets/thumbnail.png)
 
-- UE4 Plugin to handle arrays operations (sort, filter, match, range, clamp, random)
+- UE4 Plugin to handle arrays operations (sort, filter, match, range, clamp, random, average, min, max, normalize)
 - Use custom predicate function to sort or filter arrays (Int, Float, String, Name, Vector, Object, Actor)
 - This is a blueprint library plugin
 - It exposes 60+ functions to handle arrays by value or by reference
@@ -17,6 +17,50 @@
 <br>
 
 # Documentation
+
+<br>
+
+# Average
+
+![Average](./assets/average.png)
+
+| Node | Inputs | Outputs | Note |
+| -------- | ---- | ---- | ---- |
+| AverageInteger | Array(Integer) | Average(Float) | Computes the average of an array |
+| AverageFloat | Array(Float) | Average(Float) | Computes the average of an array |
+
+<br>
+
+# Minimum
+
+![Minimum](./assets/min.png)
+
+| Node | Inputs | Outputs | Note |
+| -------- | ---- | ---- | ---- |
+| MinimumIntegerIndex | Array(Integer) | Index(Integer) | Returns the index of the minimum value in the array or -1 |
+| MinimumFloatIndex | Array(Float) | Index(Integer) | Returns the index of the minimum value in the array or -1 |
+
+<br>
+
+# Maximum
+
+![Maximum](./assets/max.png)
+
+| Node | Inputs | Outputs | Note |
+| -------- | ---- | ---- | ---- |
+| MaximumIntegerIndex | Array(Integer) | Index(Integer) | Returns the index of the maximum value in the array or -1 |
+| MaximumFloatIndex | Array(Float) | Index(Integer) | Returns the index of the maximum value in the array or -1 |
+
+<br>
+
+# Normalization
+
+![Normalization](./assets/normalization.png)
+
+| Node | Inputs | Outputs | Note |
+| -------- | ---- | ---- | ---- |
+| MinMaxFloatNormalization | Array(Float), Min(Float), Max(Float) | Array(Float) | Normalize the value of the array between min and max |
+| MinMaxIntegerNormalization | Array(Integer), Min(Integer), Max(Integer) | Array(Integer) | Normalize the value of the array between min and max |
 
 <br>
 
