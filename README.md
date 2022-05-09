@@ -2,8 +2,8 @@
 
 ![thumbnail](./assets/thumbnail.png)
 
-- UE4 Plugin to handle arrays operations (sort, filter, match, range, clamp, random, average, min, max, normalize)
-- Use custom predicate function to sort or filter arrays (Int, Float, String, Name, Vector, Object, Actor)
+- UE Plugin to handle arrays operations (sort, filter, match, range, clamp, random, average, min, max, normalize)
+- Use custom predicate function to sort or filter arrays (Int, Float, Byte, Integer64, String, Name, Vector, Object, Actor, Generic)
 - This is a blueprint library plugin
 - It exposes 60+ functions to handle arrays by value or by reference
 - Can be used in any blueprint
@@ -28,6 +28,8 @@
 | -------- | ---- | ---- | ---- |
 | AverageInteger | Array(Integer) | Average(Float) | Computes the average of an array |
 | AverageFloat | Array(Float) | Average(Float) | Computes the average of an array |
+| AverageByte | Array(Byte) | Average(Byte) | Computes the average of an array |
+| AverageInteger64 | Array(Integer64) | Average(Integer64) | Computes the average of an array |
 
 <br>
 
@@ -39,6 +41,8 @@
 | -------- | ---- | ---- | ---- |
 | MinimumIntegerIndex | Array(Integer) | Index(Integer) | Returns the index of the minimum value in the array or -1 |
 | MinimumFloatIndex | Array(Float) | Index(Integer) | Returns the index of the minimum value in the array or -1 |
+| MinimumByteIndex | Array(Byte) | Index(Byte) | Returns the index of the minimum value in the array or -1 |
+| MinimumInteger64Index | Array(Integer64) | Index(Integer64) | Returns the index of the minimum value in the array or -1 |
 
 <br>
 
@@ -50,6 +54,8 @@
 | -------- | ---- | ---- | ---- |
 | MaximumIntegerIndex | Array(Integer) | Index(Integer) | Returns the index of the maximum value in the array or -1 |
 | MaximumFloatIndex | Array(Float) | Index(Integer) | Returns the index of the maximum value in the array or -1 |
+| MaximumByteIndex | Array(Byte) | Index(Byte) | Returns the index of the maximum value in the array or -1 |
+| MaximumInteger64Index | Array(Integer64) | Index(Integer64) | Returns the index of the maximum value in the array or -1 |
 
 <br>
 
@@ -61,6 +67,8 @@
 | -------- | ---- | ---- | ---- |
 | MinMaxFloatNormalization | Array(Float), Min(Float), Max(Float) | Array(Float) | Normalize the value of the array between min and max |
 | MinMaxIntegerNormalization | Array(Integer), Min(Integer), Max(Integer) | Array(Integer) | Normalize the value of the array between min and max |
+| MinMaxByteNormalization | Array(Byte), Min(Byte), Max(Byte) | Array(Byte) | Normalize the value of the array between min and max |
+| MinMaxInteger64Normalization | Array(Integer64), Min(Integer64), Max(Integer64) | Array(Integer64) | Normalize the value of the array between min and max |
 
 <br>
 
@@ -70,13 +78,7 @@
 
 | Node | Inputs | Outputs | Note |
 | -------- | ---- | ---- | ---- |
-| ReverseInteger | Array(Integer) | Array(Integer) | Reverse an array by copy and return the reversed array |
-| ReverseFloat | Array(Float) | Array(Float) | Reverse an array by copy and return the reversed array |
-| ReverseString | Array(String) | Array(String) | Reverse an array by copy and return the reversed array |
-| ReverseName | Array(Name) | Array(Name) | Reverse an array by copy and return the reversed array |
-| ReverseVector | Array(Vector) | Array(Vector) | Reverse an array by copy and return the reversed array |
-| ReverseObject | Array(Object) | Array(Object) | Reverse an array by copy and return the reversed array |
-| ReverseActor | Array(Actor) | Array(Actor) | Reverse an array by copy and return the reversed array |
+| ReverseArray | Array(*) | Array(*) | Reverse a generic array by copy and return the reversed array |
 
 <br>
 
@@ -87,13 +89,7 @@
 | Node | Inputs | Outputs | Note |
 | -------- | ---- | ---- | ---- |
 | SplitString | String | Array(String) | Splits a string using a specific separator and return an array of strings |
-| ToIntegerSet | Array(Integer) | Set(Integer) | Converts an array to a new set (removes duplicate) |
-| ToFloatSet | Array(Float) | Set(Float) | Converts an array to a new set (removes duplicate) |
-| ToNameSet | Array(Name) | Set(Name) | Converts an array to a new set (removes duplicate) |
-| ToStringSet | Array(String) | Set(String) | Converts an array to a new set (removes duplicate) |
-| ToVectorSet | Array(Vector) | Set(Vector) | Converts an array to a new set (removes duplicate) |
-| ToObjectSet | Array(Object) | Set(Object) | Converts an array to a new set (removes duplicate) |
-| ToActorSet | Array(Actor) | Set(Actor) | Converts an array to a new set (removes duplicate) |
+| ToSet | Array(*) | Set(*) | Converts a generic array to a new set (removes duplicate) |
   
 <br>
 
@@ -105,9 +101,13 @@
 | -------- | ---- | ---- | ---- |
 | ClampInteger | Array(Integer), Min, Max | Array(Integer) | Returns a new array clamped using min and max value |
 | ClampFloat | Array(Float), Min, Max | Array(Float) | Returns a new array clamped using min and max value |
+| ClampByte | Array(Byte), Min, Max | Array(Byte) | Returns a new array clamped using min and max value |
+| ClampInteger64 | Array(Integer64), Min, Max | Array(Integer64) | Returns a new array clamped using min and max value |
 | ClampVector | Array(Vector), MinSize, MaxSize, Only2D | Array(Vector) | Returns a new array clamped using min and max value |
 | ClampIntegerByRef | Array(Integer), Min, Max | void | Updates the input array and clamp values using min and max value |
 | ClampFloatByRef | Array(Float), Min, Max | void | Updates the input array and clamp values using min and max value |
+| ClampByteByRef | Array(Byte), Min, Max | void | Updates the input array and clamp values using min and max value |
+| ClampInteger64ByRef | Array(Integer64), Min, Max | void | Updates the input array and clamp values using min and max value |
 | ClampVectorRef | Array(Vector), MinSize, MaxSize, Only2D | void | Updates the input array and clamp values using min and max value |
 
 <br>
@@ -118,13 +118,7 @@
  
 | Node | Inputs | Outputs | Note |
 | -------- | ---- | ---- | ---- |
-| ExtractInteger | Array(Integer), StartIndex, EndIndex | Array(Integer) | Returns a subarray of the first array using start and end index |
-| ExtractFloat | Array(Float), StartIndex, EndIndex | Array(Float) | Returns a subarray of the first array using start and end index |
-| ExtractString | Array(String), StartIndex, EndIndex | Array(String) | Returns a subarray of the first array using start and end index |
-| ExtractName | Array(Name), StartIndex, EndIndex | Array(Name) | Returns a subarray of the first array using start and end index |
-| ExtractVector | Array(Vector), StartIndex, EndIndex | Array(Vector) | Returns a subarray of the first array using start and end index |
-| ExtractObject | Array(Object), StartIndex, EndIndex | Array(Object) | Returns a subarray of the first array using start and end index |
-| ExtractActor | Array(Actor), StartIndex, EndIndex | Array(Actor) | Returns a subarray of the first array using start and end index |
+| ExtractArray | Array(*), StartIndex, EndIndex | Array(*) | Returns a subarray of the first generic array using start and end index |
 
 <br>
 
@@ -137,6 +131,10 @@
 | RandomInteger | Size, Min, Max | Array(Integer) | Returns a random array filled with value between min and max |
 | RandomFloat | Size, Min, Max | Array(Float) | Returns a random array filled with value between min and max |
 | RandomVector | Size, Min, Max | Array(Vector) | Returns a random array filled with value between min and max |
+| RandomByte | Size, Min, Max | Array(Byte) | Returns a random array filled with value between min and max |
+| RandomBoolean | Size | Array(Boolean) | Returns a random array filled with value |
+| RandomInteger64 | Size, Min, Max | Array(Integer64) | Returns a random array filled with value between min and max |
+| PickRandomItem | Array(*), Weights(Int) | Item(*), Index(Int) | Picks a random item in a generic array based on weights and returns it with its index |
 
 <br>
 
@@ -148,12 +146,16 @@
 | -------- | ---- | ---- | ---- |
 | SortInteger | Array(Integer), IsAscending | Array(Integer) | Returns a copy of the array sorted by descending or ascending order |
 | SortFloat | Array(Float), IsAscending | Array(Float) | Returns a copy of the array sorted by descending or ascending order |
+| SortByte | Array(Byte), IsAscending | Array(Byte) | Returns a copy of the array sorted by descending or ascending order |
+| SortInteger64 | Array(Integer64), IsAscending | Array(Integer64) | Returns a copy of the array sorted by descending or ascending order |
 | SortString | Array(String), IsAscending | Array(String) | Returns a copy of the array sorted by descending or ascending order |
 | SortName | Array(Name), IsAscending | Array(Name) | Returns a copy of the array sorted by descending or ascending order |
 | SortVector | Array(Vector), Origin(Vector), IsAscending | Array(Vector) | Returns a copy of the array sorted by descending or ascending order based on Origin |
 | SortActor | Array(Actor), Origin(Actor), isAscending | Array(Actor) | Returns a copy of the array sorted by descending or ascending order based on distance to origin |
 | SortIntegerByRef | Array(Integer), IsAscending | void | Sorts the input array by descending or ascending order |
 | SortFloatByRef | Array(Float), IsAscending | void | Sorts the input array by descending or ascending order |
+| SortByteByRef | Array(Byte), IsAscending | void | Sorts the input array by descending or ascending order |
+| SortInteger64ByRef | Array(Integer64), IsAscending | void | Sorts the input array by descending or ascending order |
 | SortStringByRef | Array(String), IsAscending | void | Sorts the input array by descending or ascending order |
 | SortNameByRef | Array(Name), IsAscending | void | Sorts the input array by descending or ascending order |
 | SortVectorByRef | Array(Vector), Origin, IsAscending | void | Sorts the input array by descending or ascending order based on Origin |
@@ -176,6 +178,8 @@
 | -------- | ---- | ---- | ---- |
 | PredicateSortInteger | Array(Integer), PredicateFunction, InvertResult | Array(Integer) | Returns a new array sorted using a custom predicate |
 | PredicateSortFloat | Array(Float), PredicateFunction, InvertResult | Array(Float) | Returns a new array sorted using a custom predicate |
+| PredicateSortByte | Array(Byte), PredicateFunction, InvertResult | Array(Byte) | Returns a new array sorted using a custom predicate |
+| PredicateSortInteger64 | Array(Integer64), PredicateFunction, InvertResult | Array(Integer64) | Returns a new array sorted using a custom predicate |
 | PredicateSortString | Array(String), PredicateFunction, InvertResult | Array(String) | Returns a new array sorted using a custom predicate |
 | PredicateSortName | Array(Name), PredicateFunction, InvertResult | Array(Name) | Returns a new array sorted using a custom predicate |
 | PredicateSortVector | Array(Vector),PredicateFunction, InvertResult | Array(Vector) | Returns a new array sorted using a custom predicate |
@@ -183,6 +187,8 @@
 | PredicateSortActor | Array(Actor), PredicateFunction, InvertResult | Array(Actor) | Returns a new array sorted using a custom predicate |
 | PredicateSortIntegerByRef | Array(Integer), PredicateFunction, InvertResult | void | Sorts the input array using a custom predicate |
 | PredicateSortFloatByRef | Array(Float), PredicateFunction, InvertResult | void | Sorts the input array using a custom predicate |
+| PredicateSortByteByRef | Array(Byte), PredicateFunction, InvertResult | void | Sorts the input array using a custom predicate |
+| PredicateSortInteger64ByRef | Array(Integer64), PredicateFunction, InvertResult | void | Sorts the input array using a custom predicate |
 | PredicateSortStringByRef | Array(String), PredicateFunction, InvertResult | void | Sorts the input array using a custom predicate |
 | PredicateSortNameByRef | Array(Name), PredicateFunction, InvertResult | void | Sorts the input array using a custom predicate |
 | PredicateSortVectorByRef | Array(Vector), PredicateFunction, InvertResult | void | Sorts the input array using a custom predicate |
@@ -230,6 +236,8 @@
 | -------- | ---- | ---- | ---- |
 | PredicateFilterInteger | Array(Integer), PredicateFunction, InvertResult | Array(Integer) | Returns a new array filtered using a custom predicate |
 | PredicateFilterFloat | Array(Float), PredicateFunction, InvertResult | Array(Float) | Returns a new array filtered using a custom predicate |
+| PredicateFilterByte | Array(Byte), PredicateFunction, InvertResult | Array(Byte) | Returns a new array filtered using a custom predicate |
+| PredicateFilterInteger64 | Array(Integer64), PredicateFunction, InvertResult | Array(Integer64) | Returns a new array filtered using a custom predicate |
 | PredicateFilterString | Array(String), PredicateFunction, InvertResult | Array(String) | Returns a new array filtered using a custom predicate |
 | PredicateFilterName | Array(Name), PredicateFunction, InvertResult | Array(Name) | Returns a new array filtered using a custom predicate |
 | PredicateFilterVector | Array(Vector), PredicateFunction | Array(Vector) | Returns a new array filtered using a custom predicate, InvertResult |
