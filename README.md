@@ -17,8 +17,8 @@
 
 ![Nodes](./assets/nodes.png)
 
-1. [Get the plugin on the marketplace](https://www.unrealengine.com/marketplace/en-US/product/array-helper-bp-library)
-2. Create or an unreal engine project with a supported version
+1. [Get the plugin on the marketplace](https://www.unrealengine.com/marketplace/en-US/product/array-helper-bp-library) and install the plugin for the engine version you wish to use
+2. Create or open an unreal engine project with a supported version
 3. In the editor, go to Edit/Plugins, search for ArrayHelper, check the box to enable the plugin, restart the editor
 4. When a new plugin version is available, go to your Epic Games Launcher, under Unreal Engine/Library, under the engine version, you will find your installed plugins, find the plugin and click on update, then wait for it to finish and restart your editor
 
@@ -38,7 +38,7 @@ If you want a new feature relevant to this plugin use case, you can submit a req
 
 # Documentation
 
-    Screenshots may differ from the latest plugin version, some features may have evolved or have been removed if deprecated
+    Screenshots may differ from the latest plugin version, some features may have evolved or have been removed if deprecated.
 
     In UE 5.1, the plugin files were renamed from "SortPlugin" to "ArrayHelper" to match the real name of the plugin, you can remove the plugin and reinstall it if you want a clean install, check your uproject file to change the plugin name there too, the plugin nodes names have not changed, this renaming was necessary to match with the plugin name.
 
