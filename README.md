@@ -1,5 +1,9 @@
 # Array Helper
 
+<br>
+
+# About
+
 ![thumbnail](./assets/thumbnail.png)
 
 - UE plugin to handle arrays operations (sort, filter, match, range, clamp, random, average, min, max, normalize, math)
@@ -35,6 +39,12 @@ If you want a new feature relevant to this plugin use case, you can submit a req
 # Documentation
 
     Screenshots may differ from the latest plugin version, some features may have evolved or have been removed if deprecated
+
+    In UE 5.1, the plugin files were renamed from "SortPlugin" to "ArrayHelper" to match the real name of the plugin, you can remove the plugin and reinstall it if you want a clean install, check your uproject file to change the plugin name there too, the plugin nodes names have not changed, this renaming was necessary to match with the plugin name.
+
+    If you wish to update the current array, use functions with "ref" for best performance.
+
+    If you wish to keep the current array and get another array as output, use standard function without "ref" (a copy of the array will be made).
 
 ### Average
 
