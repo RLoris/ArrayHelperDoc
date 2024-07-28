@@ -19,8 +19,8 @@
 
 1. [Get the plugin on the marketplace](https://www.unrealengine.com/marketplace/en-US/product/array-helper-bp-library) and install the plugin for the engine version you wish to use
 2. Create or open an unreal engine project with a supported version
-3. In the editor, go to Edit/Plugins, search for ArrayHelper, check the box to enable the plugin, restart the editor
-4. When a new plugin version is available, go to your Epic Games Launcher, under Unreal Engine/Library, under the engine version, you will find your installed plugins, find the plugin and click on update, then wait for it to finish and restart your editor
+3. In the editor, go to Edit/Plugins, search for the plugin, check the box to enable it and restart the editor
+4. When a new plugin version is available, go to your Epic Games Launcher, under Unreal Engine/Library, below the engine version, you will find your installed plugins, find the plugin and click on update, then wait for it to finish and restart your editor
 
 <br>
 
@@ -38,19 +38,17 @@ If you want a new feature relevant to this plugin use case, you can submit a req
 
 # Documentation
 
-    Screenshots may differ from the latest plugin version, some features may have evolved or have been removed if deprecated.
+_Screenshots may differ from the latest plugin version, some features may have evolved or have been removed if deprecated._
 
-    In UE 5.1, the plugin files were renamed from "SortPlugin" to "ArrayHelper" to match the real name of the plugin, you can remove the plugin and reinstall it if you want a clean install, check your uproject file to change the plugin name there too, the plugin nodes names have not changed, this renaming was necessary to match with the plugin name.
+_In UE 5.1, the plugin files were renamed from "SortPlugin" to "ArrayHelper" to match the real name of the plugin, you can remove the plugin and reinstall it if you want a clean install, check your uproject file to change the plugin name there too, the plugin nodes names have not changed, this renaming was necessary to match with the plugin name._
 
-    If you wish to update the current array, use functions with "ref" for best performance.
-
-    If you wish to keep the current array and get another array as output, use standard function without "ref" (a copy of the array will be made).
+_If you wish to update the current array, use functions with "ref" for best performance. If you wish to keep the current array and get another array as output, use standard function without "ref" (a copy of the array will be made)._
 
 ### Average
 
 ![Average](./assets/average.png)
 
-    Computes the average of an array
+_Computes the average of an array_
 
 | Node | Inputs | Outputs | Note |
 | ---- | ------ | ------- | ---- |
@@ -66,7 +64,7 @@ If you want a new feature relevant to this plugin use case, you can submit a req
 
 ![Minimum](./assets/min.png)
 
-    Returns the index of the minimum value in the array or -1
+_Returns the index of the minimum value in the array or -1._
 
 | Node | Inputs | Outputs | Note |
 | ---- | ------ | ------- | ---- |
@@ -82,7 +80,7 @@ If you want a new feature relevant to this plugin use case, you can submit a req
 
 ![Maximum](./assets/max.png)
 
-    Returns the index of the maximum value in the array or -1
+_Returns the index of the maximum value in the array or -1._
 
 | Node | Inputs | Outputs | Note |
 | ---- | ------ | ------- | ---- |
@@ -98,7 +96,7 @@ If you want a new feature relevant to this plugin use case, you can submit a req
 
 ![Normalization](./assets/normalization.png)
 
-    Normalize the value of the array between min and max
+_Normalize the value of the array between min and max._
 
 | Node | Inputs | Outputs | Note |
 | ---- | ------ | ------- | ---- |
@@ -114,7 +112,7 @@ If you want a new feature relevant to this plugin use case, you can submit a req
 
 ![Reverse](./assets/reverse.png)
 
-    Reverse a generic array by copy and return the reversed array
+_Reverse a generic array by copy and return the reversed array._
 
 | Node | Inputs | Outputs | Note |
 | ---- | -------| ------- | ---- |
@@ -140,7 +138,7 @@ If you want a new feature relevant to this plugin use case, you can submit a req
 
 ![Clamp](./assets/clamp.png)
 
-    Creates or updates an array clamped using min and max value
+_Creates or updates an array clamped using min and max value._
  
 | Node | Inputs | Outputs | Note |
 | ---- | ------ | ------- | ---- |
@@ -224,9 +222,9 @@ If you want a new feature relevant to this plugin use case, you can submit a req
 
 ![Predicate Sort](./assets/predicate_sort.png)
  
-    Note v2: In order to sort by predicate you must create a functions by dragging the PredicateFunction pin and select create event, then create or select a matching function in the list
+_Note v2 and above: In order to sort by predicate you must create a functions by dragging the PredicateFunction pin and select create event, then create or select a matching function in the list._
 
-    Note v1.1 and minor: In order to sort by predicate you must implement the ArrayComparator Interface and pass the object implementing this interface as input of the function (Context), the appropriate compare method will be called to perform the sort
+_Note v1.1 and below : In order to sort by predicate you must implement the ArrayComparator Interface and pass the object implementing this interface as input of the function (Context), the appropriate compare method will be called to perform the sort._
 
 ![Example Sort](./assets/predicate_sort_delegate.png)
 ![Example Sort](./assets/predicate_sort_function.png)
@@ -288,9 +286,9 @@ If you want a new feature relevant to this plugin use case, you can submit a req
 
 ![Predicate Filter](./assets/predicate_filter.png)
 
-    Note v2: In order to filter by predicate you must create a functions by dragging the PredicateFunction pin and select create event, then create or select a matching function in the list
+_Note v2 and above: In order to filter by predicate you must create a functions by dragging the PredicateFunction pin and select create event, then create or select a matching function in the list._
 
-    Note v1.1 and minor : In order to filter by predicate you must implement the ArrayFilter Interface and pass the object implementing this interface as input of the function (Context), the appropriate filter method will be called to perform the filtering
+_Note v1.1 and below : In order to filter by predicate you must implement the ArrayFilter Interface and pass the object implementing this interface as input of the function (Context), the appropriate filter method will be called to perform the filtering._
 
 ![Example Filter](./assets/predicate_filter_delegate.png)
 ![Example Filter](./assets/predicate_filter_function.png)
@@ -313,7 +311,7 @@ If you want a new feature relevant to this plugin use case, you can submit a req
 
 ### Math
 
-    Perform math operations on a generic numeric array
+_Perform math operations on a generic numeric array._
 
 | Node | Inputs | Outputs | Note |
 | ---- | ------ | ------- | ---- |
