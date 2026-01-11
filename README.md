@@ -44,6 +44,14 @@ _In UE 5.1, the plugin files were renamed from "SortPlugin" to "ArrayHelper" to 
 
 _If you wish to update the current array, use functions with "ref" for best performance. If you wish to keep the current array and get another array as output, use standard function without "ref" (a copy of the array will be made)._
 
+### Compare
+
+_Utility to compare arrays_
+
+| Node | Inputs | Outputs | Note |
+| ---- | ------ | ------- | ---- |
+| EqualsArray | ArrayA(Array(Any)), ArrayB(Array(Any)), Mode(EArrayHelperContainerCompareMode) | Result(Bool) | Compare if two generic arrays contain the same elements based on the mode chosen (None, MatchSizeAndOrder, MatchSize) |
+
 ### Average
 
 ![Average](./assets/average.png)
@@ -116,7 +124,7 @@ _Reverse a generic array by copy and return the reversed array._
 
 | Node | Inputs | Outputs | Note |
 | ---- | -------| ------- | ---- |
-| ReverseArray | Array(*) | Array(*) |  |
+| ReverseArray | Array(Any) | Array(Any) | Returns a copy of the input array reversed |
 
 <br>
 
@@ -126,11 +134,11 @@ _Reverse a generic array by copy and return the reversed array._
 
 | Node | Inputs | Outputs | Note |
 | ---- | ------ | ------- | ---- |
-| ToSet | Array(*) | Set(*) | Converts a generic array to a new set and removes duplicates |
+| ToSet | Array(Any) | Set(Any) | Converts a generic array to a new set and removes duplicates |
 | MakeTransformArray | Locations(Array(Vector)), Rotations(Array(Rotator)), Scales(Array(Vector)) | Result(Bool), Transforms(Array(Transform)) | Creates a transform array out of locations, rotations, scales arrays |
 | BreakTransformArray | Transforms(Array(Transform)) | Locations(Array(Vector)), Rotations(Array(Rotator)), Scales(Array(Vector)) | Creates locations, rotations, scales arrays out of a transform array |
 | SplitString | String(String), Separator(String), SearchCase(Enum), RemoveEmptyString(Bool) | Array(String) | Splits a string using a specific separator and return an array of strings |
-| ArrayToString | Array(*), Delimiter(String), Start(String), End(String), ShowIndexes(Bool) | String(String) | Converts a generic array into a string |
+| ArrayToString | Array(Any), Delimiter(String), Start(String), End(String), ShowIndexes(Bool) | String(String) | Converts a generic array into a string |
   
 <br>
 
@@ -165,7 +173,12 @@ _Creates or updates an array clamped using min and max value._
  
 | Node | Inputs | Outputs | Note |
 | ---- | ------ | ------- | ---- |
-| ExtractArray | Array(*), StartIndex, EndIndex | Array(*) | Creates a subarray out of a generic array using start and end index |
+| ExtractArray | Array(Any), StartIndex, EndIndex | Array(Any) | Creates a subarray out of a generic array using start and end index |
+| RangeInteger | StartValue(Integer), EndValue(Integer), Delta(Integer), MaxCount(Integer) | Array(Integer) | Creates an array from a range using a specific delta and size limit |
+| RangeFloat | StartValue(Float), EndValue(Float), Delta(Float), MaxCount(Integer) | Array(Float) | Creates an array from a range using a specific delta and size limit |
+| RangeDouble | StartValue(Double), EndValue(Double), Delta(Double), MaxCount(Integer) | Array(Double) | Creates an array from a range using a specific delta and size limit |
+| RangeByte | StartValue(Byte), EndValue(Byte), Delta(Byte), MaxCount(Integer) | Array(Byte) | Creates an array from a range using a specific delta and size limit |
+| RangeInteger64 | StartValue(Integer64), EndValue(Integer64), Delta(Integer64), MaxCount(Integer) | Array(Integer64) | Creates an array from a range using a specific delta and size limit |
 
 <br>
 
@@ -183,7 +196,7 @@ _Creates or updates an array clamped using min and max value._
 | RandomByte | Size, Min, Max | Array(Byte) | Returns a random array filled with value between min and max |
 | RandomBoolean | Size | Array(Boolean) | Returns a random array filled with value |
 | RandomInteger64 | Size, Min, Max | Array(Integer64) | Returns a random array filled with value between min and max |
-| PickRandomItem | Array(*), Weights(Int) | Item(*), Index(Int) | Picks a random item in a generic array based on weights and returns it with its index |
+| PickRandomItem | Array(Any), Weights(Int) | Item(Any), Index(Int) | Picks a random item in a generic array based on weights and returns it with its index |
 
 <br>
 
@@ -231,28 +244,30 @@ _Note v1.1 and below : In order to sort by predicate you must implement the Arra
  
 | Node | Inputs | Outputs | Note |
 | ---- | ------ | ------- | ---- |
-| PredicateSortInteger | Array(Integer), PredicateFunction, InvertResult | Array(Integer) | Returns a new array sorted using a custom predicate |
-| PredicateSortFloat | Array(Float), PredicateFunction, InvertResult | Array(Float) | Returns a new array sorted using a custom predicate |
-| PredicateSortDouble | Array(Double), PredicateFunction, InvertResult | Array(Double) | Returns a new array sorted using a custom predicate |
-| PredicateSortByte | Array(Byte), PredicateFunction, InvertResult | Array(Byte) | Returns a new array sorted using a custom predicate |
-| PredicateSortInteger64 | Array(Integer64), PredicateFunction, InvertResult | Array(Integer64) | Returns a new array sorted using a custom predicate |
-| PredicateSortString | Array(String), PredicateFunction, InvertResult | Array(String) | Returns a new array sorted using a custom predicate |
-| PredicateSortName | Array(Name), PredicateFunction, InvertResult | Array(Name) | Returns a new array sorted using a custom predicate |
-| PredicateSortVector | Array(Vector),PredicateFunction, InvertResult | Array(Vector) | Returns a new array sorted using a custom predicate |
-| PredicateSortVector2D | Array(Vector2D),PredicateFunction, InvertResult | Array(Vector2D) | Returns a new array sorted using a custom predicate |
-| PredicateSortActor | Array(Actor), PredicateFunction, InvertResult | Array(Actor) | Returns a new array sorted using a custom predicate |
-| PredicateSortObject | Array(Object), PredicateFunction, InvertResult | Array(Object) | Returns a new array sorted using a custom predicate |
-| PredicateSortIntegerByRef | Array(Integer), PredicateFunction, InvertResult | void | Sorts the input array using a custom predicate |
-| PredicateSortFloatByRef | Array(Float), PredicateFunction, InvertResult | void | Sorts the input array using a custom predicate |
-| PredicateSortDoubleByRef | Array(Double), PredicateFunction, InvertResult | void | Sorts the input array using a custom predicate |
-| PredicateSortByteByRef | Array(Byte), PredicateFunction, InvertResult | void | Sorts the input array using a custom predicate |
-| PredicateSortInteger64ByRef | Array(Integer64), PredicateFunction, InvertResult | void | Sorts the input array using a custom predicate |
-| PredicateSortStringByRef | Array(String), PredicateFunction, InvertResult | void | Sorts the input array using a custom predicate |
-| PredicateSortNameByRef | Array(Name), PredicateFunction, InvertResult | void | Sorts the input array using a custom predicate |
-| PredicateSortVectorByRef | Array(Vector), PredicateFunction, InvertResult | void | Sorts the input array using a custom predicate |
-| PredicateSortVector2DByRef | Array(Vector2D), PredicateFunction, InvertResult | void | Sorts the input array using a custom predicate |
-| PredicateSortActorByRef | Array(Actor), PredicateFunction, InvertResult | void | Sorts the input array using a custom predicate |
-| PredicateSortObjectByRef | Array(Object), PredicateFunction, InvertResult | void | Sorts the input array using a custom predicate |
+| PredicateSortInteger | Array(Integer), PredicateFunction, InvertResult(Bool) | Array(Integer) | Returns a new array sorted using a custom predicate |
+| PredicateSortFloat | Array(Float), PredicateFunction, InvertResult(Bool) | Array(Float) | Returns a new array sorted using a custom predicate |
+| PredicateSortDouble | Array(Double), PredicateFunction, InvertResult(Bool) | Array(Double) | Returns a new array sorted using a custom predicate |
+| PredicateSortByte | Array(Byte), PredicateFunction, InvertResult(Bool) | Array(Byte) | Returns a new array sorted using a custom predicate |
+| PredicateSortInteger64 | Array(Integer64), PredicateFunction, InvertResult(Bool) | Array(Integer64) | Returns a new array sorted using a custom predicate |
+| PredicateSortString | Array(String), PredicateFunction, InvertResult(Bool) | Array(String) | Returns a new array sorted using a custom predicate |
+| PredicateSortName | Array(Name), PredicateFunction, InvertResult(Bool) | Array(Name) | Returns a new array sorted using a custom predicate |
+| PredicateSortVector | Array(Vector),PredicateFunction, InvertResult(Bool) | Array(Vector) | Returns a new array sorted using a custom predicate |
+| PredicateSortVector2D | Array(Vector2D),PredicateFunction, InvertResult(Bool) | Array(Vector2D) | Returns a new array sorted using a custom predicate |
+| PredicateSortActor | Array(Actor), PredicateFunction, InvertResult(Bool) | Array(Actor) | Returns a new array sorted using a custom predicate |
+| PredicateSortObject | Array(Object), PredicateFunction, InvertResult(Bool) | Array(Object) | Returns a new array sorted using a custom predicate |
+| PredicateSortWildcard | Array(Wildcard), Owner(Object), PredicateName(Name), InvertResult(Bool) | Result(Bool), Array(Wildcard) | Returns a new array sorted using a custom predicate function inside an object, the function inputs (A, B) need to match array element type and return a boolean |
+| PredicateSortIntegerByRef | Array(Integer), PredicateFunction, InvertResult(Bool) | void | Sorts the input array using a custom predicate |
+| PredicateSortFloatByRef | Array(Float), PredicateFunction, InvertResult(Bool) | void | Sorts the input array using a custom predicate |
+| PredicateSortDoubleByRef | Array(Double), PredicateFunction, InvertResult(Bool) | void | Sorts the input array using a custom predicate |
+| PredicateSortByteByRef | Array(Byte), PredicateFunction, InvertResult(Bool) | void | Sorts the input array using a custom predicate |
+| PredicateSortInteger64ByRef | Array(Integer64), PredicateFunction, InvertResult(Bool) | void | Sorts the input array using a custom predicate |
+| PredicateSortStringByRef | Array(String), PredicateFunction, InvertResult(Bool) | void | Sorts the input array using a custom predicate |
+| PredicateSortNameByRef | Array(Name), PredicateFunction, InvertResult(Bool) | void | Sorts the input array using a custom predicate |
+| PredicateSortVectorByRef | Array(Vector), PredicateFunction, InvertResult(Bool) | void | Sorts the input array using a custom predicate |
+| PredicateSortVector2DByRef | Array(Vector2D), PredicateFunction, InvertResult(Bool) | void | Sorts the input array using a custom predicate |
+| PredicateSortActorByRef | Array(Actor), PredicateFunction, InvertResult(Bool) | void | Sorts the input array using a custom predicate |
+| PredicateSortObjectByRef | Array(Object), PredicateFunction, InvertResult(Bool) | void | Sorts the input array using a custom predicate |
+| PredicateSortWildcardByRef | Array(Wildcard), Owner(Object), PredicateName(Name), InvertResult(Bool) | Result(Bool) | Sorts the input array using a custom predicate function inside an object, the function inputs (A, B) need to match array element type and return a boolean |
 
 <br>
 
@@ -295,17 +310,18 @@ _Note v1.1 and below : In order to filter by predicate you must implement the Ar
 
 | Node | Inputs | Outputs | Note |
 | ---- | ------ | ------- | ---- |
-| PredicateFilterInteger | Array(Integer), PredicateFunction, InvertResult | Array(Integer) | Returns a new array filtered using a custom predicate |
-| PredicateFilterFloat | Array(Float), PredicateFunction, InvertResult | Array(Float) | Returns a new array filtered using a custom predicate |
-| PredicateFilterDouble | Array(Double), PredicateFunction, InvertResult | Array(Double) | Returns a new array filtered using a custom predicate |
-| PredicateFilterByte | Array(Byte), PredicateFunction, InvertResult | Array(Byte) | Returns a new array filtered using a custom predicate |
-| PredicateFilterInteger64 | Array(Integer64), PredicateFunction, InvertResult | Array(Integer64) | Returns a new array filtered using a custom predicate |
-| PredicateFilterString | Array(String), PredicateFunction, InvertResult | Array(String) | Returns a new array filtered using a custom predicate |
-| PredicateFilterName | Array(Name), PredicateFunction, InvertResult | Array(Name) | Returns a new array filtered using a custom predicate |
-| PredicateFilterVector | Array(Vector), PredicateFunction | Array(Vector) | Returns a new array filtered using a custom predicate, InvertResult |
-| PredicateFilterVector2D | Array(Vector2D), PredicateFunction | Array(Vector2D) | Returns a new array filtered using a custom predicate, InvertResult |
-| PredicateFilterActor | Array(Actor), PredicateFunction | Array(Actor) | Returns a new array filtered using a custom predicate, InvertResult |
-| PredicateFilterObject | Array(Object), PredicateFunction | Array(Object) | Returns a new array filtered using a custom predicate, InvertResult |
+| PredicateFilterInteger | Array(Integer), PredicateFunction, InvertResult(Bool) | Array(Integer) | Returns a new array filtered using a custom predicate |
+| PredicateFilterFloat | Array(Float), PredicateFunction, InvertResult(Bool) | Array(Float) | Returns a new array filtered using a custom predicate |
+| PredicateFilterDouble | Array(Double), PredicateFunction, InvertResult(Bool) | Array(Double) | Returns a new array filtered using a custom predicate |
+| PredicateFilterByte | Array(Byte), PredicateFunction, InvertResult(Bool) | Array(Byte) | Returns a new array filtered using a custom predicate |
+| PredicateFilterInteger64 | Array(Integer64), PredicateFunction, InvertResult(Bool) | Array(Integer64) | Returns a new array filtered using a custom predicate |
+| PredicateFilterString | Array(String), PredicateFunction, InvertResult(Bool) | Array(String) | Returns a new array filtered using a custom predicate |
+| PredicateFilterName | Array(Name), PredicateFunction, InvertResult(Bool) | Array(Name) | Returns a new array filtered using a custom predicate |
+| PredicateFilterVector | Array(Vector), PredicateFunction, InvertResult(Bool) | Array(Vector) | Returns a new array filtered using a custom predicate |
+| PredicateFilterVector2D | Array(Vector2D), PredicateFunction, InvertResult(Bool) | Array(Vector2D) | Returns a new array filtered using a custom predicate |
+| PredicateFilterActor | Array(Actor), PredicateFunction, InvertResult(Bool) | Array(Actor) | Returns a new array filtered using a custom predicate |
+| PredicateFilterObject | Array(Object), PredicateFunction, InvertResult(Bool) | Array(Object) | Returns a new array filtered using a custom predicate |
+| PredicateFilterWildcard | Array(Wildcard), Owner(Object), PredicateName(Name), InvertResult(Bool) | Array(Wildcard) | Returns a new array filtered using a custom predicate function inside an object, the function input (Element) need to match the array element type and return a boolean |
 
 <br>
 
